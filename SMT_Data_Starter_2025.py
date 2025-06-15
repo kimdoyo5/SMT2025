@@ -26,7 +26,7 @@ WARNING: The data subsets are large, especially `player_pos`. Reading the
 """
 
 # For the data_path argument, include the full file path to the folder that holds the data!    
-def readDataSubset(table_type, data_path="C:\\Users\\username\\file-path\\SMT-Data-Challenge-2025"):
+def readDataSubset(table_type, data_path=r".\SMT-Data-Challenge-2025-Updated"):
     if table_type not in ['ball_pos', 'game_events', 'game_info', 'player_pos', 'rosters']:
         print("Invalid data subset name. Please try again with a valid data subset.")
         return -1
