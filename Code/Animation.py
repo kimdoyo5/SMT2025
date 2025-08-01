@@ -1,5 +1,5 @@
 import pandas as pd
-from sportypy.surfaces import MiLBField
+from sportypy.surfaces import MLBField
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import numpy as np
@@ -45,7 +45,7 @@ def plot_animation(player_position_df: pd.DataFrame,
     merged_df = pd.merge(player_pos, ball_pos, on = ['timestamp', 'play_id', 'game_str'], how = 'left')
     merged_df = merged_df[merged_df['player_position'] < 14] # Elminate umpires and coaches on field
     
-    field = MiLBField()
+    field = MLBField()
     field.draw(display_range='full')
 
     fig = plt.gcf()
@@ -55,7 +55,7 @@ def plot_animation(player_position_df: pd.DataFrame,
     b = field.scatter([], [], c='red')
 
     game_id = merged_df['game_str'].unique()[0]
-    game_text = ax.text(0, 400, f'Game ID: {game_id}', c='white', ha='center')
+    game_text = ax.text(0, 300, f'Game ID: {game_id}', c='white', ha='center')
     play_text = ax.text(120, 0, f'Play: {play_id}', c='white', ha='center')
     # timestamp_text = ax.text(-200, 0, '', c='white', ha='center')  # <--- ADDED LINE
 
@@ -82,9 +82,9 @@ def plot_animation(player_position_df: pd.DataFrame,
         return p, b
 
     ani = FuncAnimation(fig, update, frames=np.linspace(merged_df['timestamp'].min(), 
-                                                        merged_df['timestamp'].max(), num=50), blit=True)
+                                                        merged_df['timestamp'].max(), num=110), interval=1000/20, blit=True)
 
     if save_gif:
-        ani.save('animation.gif', writer='imagemagick', fps=10)
+        ani.save('animation.gif', writer='imagemagick', fps=20)
     
     return HTML(ani.to_jshtml())
