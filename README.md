@@ -15,5 +15,5 @@ Nonetheless, beneath every powerful swing, hard throw, and a fast sprint there i
   *Is there such a thing as a “hustle culture”?*  
   *Can teams actually win games by hustling?*  
 
-This project aims to answer these questions by quantifying hustle and its influence on game outcomes.
+This project aims to answer these questions by **quantifying hustle and its influence on game outcomes**.
 
